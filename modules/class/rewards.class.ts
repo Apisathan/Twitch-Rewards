@@ -107,21 +107,33 @@ export default class RewardsClass {
 			},
 		]);
 
+		this.create({
+			key: response.key,
+			name: response.name
+		})
+		await this.start();
+	}
+
+	/**
+	 * Create a reward
+	 *
+	 * @param reward
+	 */
+	public static create(reward: RewardInterface) {
 		let rewards = this.get();
-		if(rewards.filter(reward => reward.name == response.name).length) {
-			console.error(cliColor.red(`Theres already a reward called: ${response.name}`));
-			await this.start();
-			return;
+		if(rewards.filter(fReward => fReward.name == reward.name).length) {
+			console.error(cliColor.red(`Theres already a reward called: ${reward.name}`));
+			return false;
 		}
 
 		rewards.push({
-			'key': response.key,
-			'name': response.name,
+			'key': reward.key,
+			'name': reward.name,
 		});
 
 		fs.writeFileSync('rewards.json', JSON.stringify(rewards));
-		console.log(cliColor.greenBright(`Created ${response.name} which presses on: ${response.key}`));
-		await this.start();
+		console.log(cliColor.greenBright(`Created ${reward.name} which presses on: ${reward.key}`));
+		return true;
 	}
 
 	/**
