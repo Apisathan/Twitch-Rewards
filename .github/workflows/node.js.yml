@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: Install xmllint
+    - name: Installing packages
     - run: sudo apt-get install libxtst-dev libpng++-dev -y
     - run: npm ci
     - run: npm run test
