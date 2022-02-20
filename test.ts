@@ -2,7 +2,7 @@ import RewardsClass from './modules/class/rewards.class';
 import * as core from '@actions/core';
 
 (async () => {
-	if(RewardsClass.create({
+	if(!RewardsClass.create({
 		key: 'e',
 		name: 'Test'
 	})) {
