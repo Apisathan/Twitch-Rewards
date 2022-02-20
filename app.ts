@@ -1,6 +1,6 @@
 import prompts from 'prompts';
-import Bot from './modules/class/bot';
-import Rewards from './modules/class/rewards';
+import BotClass from './modules/class/bot.class';
+import RewardsClass from './modules/class/rewards.class';
 
 (async () => {
 	await launch();
@@ -23,16 +23,22 @@ export async function launch() {
 					description: 'Create new or delete a current reward',
 					value: 'add'
 				},
+				{
+					title: 'Exit',
+					value: 'exit'
+				},
 			],
 		},
 	]);
 
 	switch (response.option) {
 		case 'add':
-			Rewards.start().then();
+			RewardsClass.start().then();
+			break;
+		case 'exit':
 			break;
 		default:
-			Bot.start().then();
+			BotClass.start().then();
 			break;
 	}
 }

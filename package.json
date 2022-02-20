@@ -13,10 +13,12 @@
   "dependencies": {
     "@twurple/auth": "^5.0.17",
     "@twurple/pubsub": "^5.0.17",
+    "cli-color": "^2.0.1",
     "prompts": "^2.4.2",
     "robotjs": "^0.6.0"
   },
   "devDependencies": {
+    "@types/cli-color": "^2.0.2",
     "@types/prompts": "^2.0.14"
   }
 }

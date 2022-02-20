@@ -1,9 +1,10 @@
-#
+# Custom
 .idea/
 *.js
 klient.txt
 config.json
 app.exe
+rewards.json
 
 # Logs
 logs

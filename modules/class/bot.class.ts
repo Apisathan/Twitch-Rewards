@@ -3,10 +3,16 @@ import {StaticAuthProvider} from "@twurple/auth";
 import {PubSubClient, PubSubRedemptionMessage} from "@twurple/pubsub";
 import robotjs from "robotjs";
 import prompts from "prompts";
+import RewardsClass from './rewards.class';
+import {RewardInterface} from "../interfaces/reward.interface";
+import cliColor from "cli-color";
 
-export default class Bot {
+export default class BotClass {
+
+	private static rewards: RewardInterface[];
 
 	public static async start() {
+		this.rewards = RewardsClass.get();
 		if(fs.existsSync('config.json')){
 			const config = JSON.parse(fs.readFileSync('config.json').toString());
 
@@ -16,12 +22,14 @@ export default class Bot {
 
 				const userId = await pubSubClient.registerUserListener(authProvider);
 				await pubSubClient.onRedemption(userId, (message: PubSubRedemptionMessage) => {
-					if(message.rewardTitle == 'Tryk på G for mig') {
-						let now = new Date();
-						let time = now.getHours() + ':' +now.getMinutes()+':'+now.getSeconds();
-						console.log('['+time+'] '+message.userDisplayName+' har lige redeemed Tryk på G for mig');
-						robotjs.keyTap('g');
-					}
+					this.rewards.forEach(function (reward) {
+						if(message.rewardTitle == reward.name) {
+							let now = new Date();
+							let time = now.getHours() + ':' +now.getMinutes()+':'+now.getSeconds();
+							console.log(`[${time}] ${message.userDisplayName} just redeemed: ${cliColor.blueBright(reward.name)}`)
+							robotjs.keyTap(reward.key);
+						}
+					});
 				});
 				console.log('The bot is ready!');
 			}catch (e) {
