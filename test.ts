@@ -1,5 +1,5 @@
-
+import RewardsClass from './modules/class/rewards.class';
 
 (async () => {
-	console.log('yes');
+	throw new Error('Test')
 })();
