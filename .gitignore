@@ -1,3 +1,10 @@
+#
+.idea/
+*.js
+klient.txt
+config.json
+app.exe
+
 # Logs
 logs
 *.log
