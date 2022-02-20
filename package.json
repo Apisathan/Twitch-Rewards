@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node test.js",
+    "test": "tsc && node test.js",
     "build:test": "tsc && node app.js",
     "build": "tsc && nexe --build -name=TwitchRewards"
   },
