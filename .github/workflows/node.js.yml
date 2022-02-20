@@ -27,6 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Installing packages
-    - run: sudo apt-get install libxtst-dev libpng++-dev -y
+      run: sudo apt-get install libxtst-dev libpng++-dev -y
     - run: npm ci
     - run: npm run test
