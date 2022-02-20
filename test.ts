@@ -1,5 +1,5 @@
 import RewardsClass from './modules/class/rewards.class';
-import core from '@actions/core';
+import * as core from '@actions/core';
 
 (async () => {
 	if(RewardsClass.create({

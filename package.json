@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@actions/core": "^1.6.0",
     "@twurple/auth": "^5.0.17",
     "@twurple/pubsub": "^5.0.17",
     "cli-color": "^2.0.1",
