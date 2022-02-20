@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test.js",
     "build:test": "tsc && node app.js",
-    "build": "tsc && nexe --build"
+    "build": "tsc && nexe --build -name=TwitchRewards"
   },
   "author": "",
   "license": "ISC",

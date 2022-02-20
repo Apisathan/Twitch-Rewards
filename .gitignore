@@ -3,7 +3,7 @@
 *.js
 klient.txt
 config.json
-app.exe
+TwitchRewards.exe
 rewards.json
 
 # Logs
