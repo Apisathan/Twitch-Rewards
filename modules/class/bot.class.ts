@@ -11,6 +11,9 @@ export default class BotClass {
 
 	private static rewards: RewardInterface[];
 
+	/**
+	 * Launches the listener
+	 */
 	public static async start() {
 		this.rewards = RewardsClass.get();
 		if(fs.existsSync('config.json')){

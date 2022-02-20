@@ -6,6 +6,9 @@ import cliColor from "cli-color";
 
 export default class RewardsClass {
 
+	/**
+	 * Show menu
+	 */
 	public static async start() {
 		const response = await prompts([
 			{
@@ -50,6 +53,9 @@ export default class RewardsClass {
 		}
 	}
 
+	/**
+	 * Get all rewards
+	 */
 	public static get()  {
 		if(fs.existsSync('rewards.json')){
 			return <RewardInterface[]> JSON.parse(fs.readFileSync('rewards.json').toString());
@@ -57,6 +63,9 @@ export default class RewardsClass {
 		return [];
 	}
 
+	/**
+	 * Show all rewards
+	 */
 	public static async show() {
 		const rewards = this.get();
 		if (rewards.length == 0) {
@@ -73,6 +82,11 @@ export default class RewardsClass {
 		await this.back();
 	}
 
+	/**
+	 * Add reward
+	 *
+	 * @private
+	 */
 	private static async add() {
 		const response = await prompts([
 			{
@@ -110,8 +124,19 @@ export default class RewardsClass {
 		await this.start();
 	}
 
+	/**
+	 * Select a reward to remove.
+	 *
+	 * @private
+	 */
 	private static async remove() {
 		let rewards = this.get();
+
+		if(rewards.length === 0) {
+			console.log(`${cliColor.red('No rewards is made')}`)
+			await this.start();
+			return;
+		}
 
 		let choices: Choice[] = [];
 		rewards.forEach(function (reward, index) {
@@ -155,6 +180,11 @@ export default class RewardsClass {
 		await this.start();
 	}
 
+	/**
+	 * Show back confirm
+	 *
+	 * @private
+	 */
 	private static async back() {
 		const response = await prompts([
 			{
