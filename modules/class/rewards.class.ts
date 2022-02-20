@@ -109,7 +109,7 @@ export default class RewardsClass {
 
 		let rewards = this.get();
 		if(rewards.filter(reward => reward.name == response.name).length) {
-			console.error(cliColor.red(`There already a reward called: ${response.name}`));
+			console.error(cliColor.red(`Theres already a reward called: ${response.name}`));
 			await this.start();
 			return;
 		}
